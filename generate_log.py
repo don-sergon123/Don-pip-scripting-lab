@@ -3,9 +3,8 @@ import os
 
 
 def generate_log(log_data=None):
-    if not log_data:
+    if log_data is None or len(log_data) == 0:
         raise ValueError("log_data cannot be empty or None")
-
     filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
 
     with open(filename, "w") as file:
