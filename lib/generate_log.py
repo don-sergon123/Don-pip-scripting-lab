@@ -2,13 +2,13 @@ from datetime import datetime
 import os
 
 
-def generate_log(log_data=None):
-    if log_data is None or len(log_data) == 0:
-        raise ValueError("log_data cannot be empty or None")
+def generate_log(log_data):
+    if not isinstance(log_data, list):
+        raise ValueError("log_data must be a list")
 
-    date_str = datetime.now().strftime("%Y%m%d")
-    filename = f"log_{date_str}.txt"
+    filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
 
+    # Writing an empty list [] creates an empty log file as required by test_empty_log_list_creates_empty_file
     with open(filename, "w") as file:
         for entry in log_data:
             file.write(f"{entry}\n")
